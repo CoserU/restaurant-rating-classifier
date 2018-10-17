@@ -2,10 +2,8 @@ import pandas as pd
 import numpy as np
 from collections import Counter
 
-df_tr = pd.read_csv(
-    'F:/Courses/Machine Learning/homework/hw2/reviews_tr.csv', nrows=500000)
-df_te = pd.read_csv(
-    'F:/Courses/Machine Learning/homework/hw2/reviews_te.csv')
+df_tr = pd.read_csv('F:/Courses/Machine Learning/homework/hw2/reviews_tr.csv', nrows=500000)
+df_te = pd.read_csv('F:/Courses/Machine Learning/homework/hw2/reviews_te.csv')
 print(df_tr.shape, df_te.shape)
 
 
@@ -158,9 +156,9 @@ def evaluate(test_data, mode='unigram', extract_func=unigram, *args):
     return accurate_count / all_count
 
 
-#mode = 'unigram'
-#mode = 'tfidf'
-mode = 'bigram'
+mode = 'unigram'
+# mode = 'tfidf'
+# mode = 'bigram'
 
 if mode == 'unigram':
     res = train_pass(df_tr, mode, unigram)
@@ -173,7 +171,7 @@ elif mode == 'bigram':
     accuracy = evaluate(df_te, mode, bigram, res)
 print(mode, 'accuracy is', accuracy)
 
-'''
+
 if mode == 'unigram' or mode == 'bigram':
     w_final = res
 elif mode == 'tfidf':
@@ -183,4 +181,3 @@ high_words = w_sort[-10:]
 low_wods = w_sort[:10]
 print(high_words)
 print(low_wods)
-'''
